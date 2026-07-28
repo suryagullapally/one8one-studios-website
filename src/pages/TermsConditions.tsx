@@ -57,7 +57,9 @@ const TermsConditions = () => {
                                     <p className="whitespace-pre-line text-sm leading-relaxed text-slate-300/85 md:text-base">
                                         Support: support.bejo@one8onestudios.com{"\n"}
                                         Privacy and grievance contact: privacy.bejo@one8onestudios.com{"\n"}
-                                        Website: https://bejo.one8onestudios.com
+                                        Website: https://bejo.one8onestudios.com{"\n"}
+                                        Privacy Policy: https://bejo.one8onestudios.com/privacy-policy{"\n"}
+                                        Terms: https://bejo.one8onestudios.com/terms-and-conditions
                                     </p>
                                 </section>
                             </div>

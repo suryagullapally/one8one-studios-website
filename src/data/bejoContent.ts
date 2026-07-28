@@ -29,7 +29,7 @@ export const bejoApp = {
 
 export const companyInfo = [
     "Onaytone Software Studios Private Limited\nCIN: U62011TS2026PTC217215\n1-31-821, Krishna Nagar, Old Bowenpally, Trimulgherry, Rangareddy, Hyderabad - 500015, Telangana, India",
-    "Support: support.bejo@one8onestudios.com\nPrivacy and grievance contact: privacy.bejo@one8onestudios.com\nWebsite: https://bejo.one8onestudios.com",
+    "Support: support.bejo@one8onestudios.com\nPrivacy and grievance contact: privacy.bejo@one8onestudios.com\nWebsite: https://bejo.one8onestudios.com\nPrivacy Policy: https://bejo.one8onestudios.com/privacy-policy\nTerms: https://bejo.one8onestudios.com/terms-and-conditions",
 ];
 
 export const privacySections: LegalSection[] = [
@@ -44,7 +44,7 @@ export const privacySections: LegalSection[] = [
             "Service data: uploaded files, file names, file sizes, transfer metadata, sender and receiver identifiers, permissions, expiry settings, receiver notes, view counts, print settings, and conversion outputs.",
             "Operational data: signup OTP records, hashed OTP values, attempt counts, push notification tokens, support messages, abuse reports, device permissions, and infrastructure logs.",
             "Business settings: account type, usage type, public receiver profile fields, print-pricing settings, currency, and related configuration where enabled.",
-            "Categories of Information We Collect: Within the past 12 months, we have collected the following categories of personal information to provide our services: Identifiers (name, email, Bejo ID, Firebase UID), Commercial/Service data (file names, sizes, transfer metadata, print settings), and Internet/Network activity logs (infrastructure logs, OTP records).",
+            "Categories of Information We Collect: Within the past 12 months, we have collected the following categories of personal information to provide our services: Identifiers (name, email address, guest phone number where used for guest sends, Bejo ID, Firebase UID), Commercial/Service data (file names, sizes, transfer metadata, print settings), and Internet/Network activity logs (infrastructure logs, OTP records).",
         ],
     },
     {
@@ -61,9 +61,17 @@ export const privacySections: LegalSection[] = [
         ],
     },
     {
+        title: "Reports and Blocking",
+        items: [
+            "When a receiver uses in-app Report or Block Sender controls, Bejo may process the transfer ID, selected file metadata, reporter UID, sender account identifier, report reason, report details, timestamps, and a compact transfer snapshot.",
+            "Abuse reports are used for safety review, support, enforcement, legal compliance, and abuse prevention. Report records are restricted from direct client access and reviewed by the Bejo team.",
+            "For abuse, safety, copyright, privacy, or harmful-content concerns, email support.bejo@one8onestudios.com.",
+        ],
+    },
+    {
         title: "Service Providers",
         items: [
-            "Bejo may use Firebase Authentication, Cloud Firestore, Firebase Storage, Firebase Cloud Functions, Firebase Cloud Messaging, Google Cloud Run, Google Cloud infrastructure, and Brevo or SMTP email infrastructure.",
+            "Bejo may use Firebase Authentication for email/password authentication, Cloud Firestore, Firebase Cloud Functions, Firebase Cloud Messaging, Google Cloud Run, Google Cloud infrastructure, Cloudflare R2 object storage for active transfer files, Firebase Storage for profile photos and legacy transfer objects, and Brevo or SMTP email infrastructure.",
             "Device, browser, and operating-system services may be used for file selection, camera access, media saving, media playback, printing, sharing, and notifications when you use those features.",
         ],
     },
@@ -77,8 +85,8 @@ export const privacySections: LegalSection[] = [
     {
         title: "Retention",
         items: [
-            "Uploaded files are stored until the configured transfer expiry and are normally removed from Firebase Storage within about 5 minutes after expiry, although technical delays may occur.",
-            "Transfer metadata may be retained for up to 1 year for history, security, audit, abuse prevention, support, and compliance.",
+            "Active transfer files are stored in Cloudflare R2 until the configured transfer expiry and are normally removed within about 5 minutes after expiry, although technical delays may occur. Profile photos and legacy transfer objects may be stored in Firebase Storage and are removed when no longer needed or when the relevant account is deleted.",
+            "Transfer metadata is retained for 12 months from transfer creation where required for legal, security, audit, abuse prevention, support, and compliance purposes, then deleted.",
             "Signup OTP codes expire after 10 minutes. OTP verification records may be retained for up to 30 days.",
             "Push notification tokens may be retained until replaced, disabled, account deletion is completed, or up to 90 days after they are determined inactive.",
             "Conversion inputs are processed in temporary server workspaces and removed after the request completes.",
@@ -90,17 +98,16 @@ export const privacySections: LegalSection[] = [
         items: [
             "Depending on your location, you may request access, correction, deletion, export, restriction, objection, consent withdrawal, complaint handling, and nomination where Indian law applies.",
             "California residents may request to know, access, delete, correct, and receive information about disclosures. Bejo will not discriminate against users for exercising CCPA rights.",
-            "India DPDP requests, grievance redressal requests, and privacy requests may be sent to privacy.bejo@one8onestudios.com.",
             "We may need to verify your identity before completing a privacy request.",
-            "India DPDP Compliance: Onaytone software Studios Private Limited acts as the Data Fiduciary. You can exercise your rights, including the right to access, correction, erasure, and the right to nominate a representative, by contacting our designated Grievance Officer at privacy.bejo@one8onestudios.com.",
-            "Account Deletion: You can permanently delete your account and all associated personal data at any time directly through the app via Settings > Account > Delete Account, or by emailing our privacy team. Upon deletion, active files and user identifiers are purged from our live databases in accordance with our retention schedules.",
+            "India DPDP Compliance: Onaytone Software Studios Private Limited acts as the Data Fiduciary. You can exercise your rights, including the right to access, correction, erasure, and the right to nominate a representative, by contacting our designated Grievance Officer at privacy.bejo@one8onestudios.com.",
+            "Account Deletion: You can permanently delete your account directly through the app via Settings > Account > Delete Account, or by emailing our privacy team. Upon deletion, your account profile, profile picture, push tokens, public receiver records, active uploaded files, and app-visible transfer records are removed from live services. Transfer metadata required by Indian law is retained for 12 months from transfer creation in backend-only compliance records, then deleted.",
         ],
     },
     {
         title: "Children and Security",
         items: [
             "Bejo is not intended for users under 18 years of age unless a legally compliant parental or guardian-consent process is provided.",
-            "Bejo uses reasonable technical and organizational safeguards, including Firebase and Google Cloud security controls, HTTPS/TLS, authentication, storage rules, and operational monitoring.",
+            "Bejo uses reasonable technical and organizational safeguards, including Firebase, Google Cloud, and Cloudflare security controls, HTTPS/TLS, authentication, storage access controls, and operational monitoring.",
             "No digital service can be guaranteed completely secure, so users should avoid sending highly sensitive files unless they understand and accept the risks.",
         ],
     },
@@ -120,7 +127,7 @@ export const termsSections: LegalSection[] = [
         items: [
             "You may use Bejo only if you can form a legally binding agreement and are permitted to use the service under applicable law.",
             "Bejo is not intended for users under 18 years of age unless a legally compliant parental or guardian-consent process is provided.",
-            "You must provide accurate account information, protect your credentials, keep your information current, and promptly notify Bejo if you suspect unauthorized access.",
+            "You must provide accurate account information, protect your credentials and verification-code access, keep your information current, and promptly notify Bejo if you suspect unauthorized access.",
         ],
     },
     {
@@ -157,8 +164,8 @@ export const termsSections: LegalSection[] = [
     {
         title: "Printing and Downloading",
         items: [
-            "Printing and downloading may depend on sender permissions, product behavior, device capabilities, browser behavior, operating-system support, local print setup, and external applications or services.",
-            "Bejo may display print instructions, page counts, copy counts, color settings, paper settings, pricing estimates, or related metadata where supported. Estimates are informational only unless a separate written agreement says otherwise.",
+            "Printing and downloading may depend on sender permissions, product behavior, device capabilities, browser behavior, operating-system support, local print setup, and external applications or services opened from Bejo.",
+            "Bejo may display print instructions, page counts, copy counts, color or black-and-white settings, paper settings, pricing estimates, or related metadata where supported. Estimates are informational only unless a separate written agreement says otherwise.",
             "Bejo is not responsible for printer errors, print quality, paper usage, printer configuration, print-shop handling, third-party app behavior, or outcomes outside Bejo's direct control.",
         ],
     },
@@ -166,7 +173,7 @@ export const termsSections: LegalSection[] = [
         title: "Expiry, History, and Deletion",
         items: [
             "Files may expire or become unavailable based on sender settings, system rules, service operation, or enforcement action.",
-            "Expired files are normally removed from Firebase Storage by a scheduled backend cleanup process shortly after expiry, but deletion may be delayed for technical, security, legal, or provider reasons.",
+            "Expired transfer files are normally removed from Cloudflare R2 by a scheduled backend cleanup process shortly after expiry. Profile photos and legacy transfer objects may be stored in Firebase Storage. Deletion may be delayed for technical, security, legal, or provider reasons.",
             "Transfer history may remain after files are deleted. Clearing inbox or sent history may hide records from your view, but it does not necessarily delete all backend records immediately.",
             "You should keep independent backups of important files.",
         ],
@@ -181,10 +188,18 @@ export const termsSections: LegalSection[] = [
         ],
     },
     {
+        title: "Reporting Abuse",
+        items: [
+            "Receivers can report offensive, illegal, harmful, infringing, privacy-invasive, spam, scam, or abusive transfers from the in-app Report controls on received transfers and file previews.",
+            "Receivers can block abusive senders from received transfers. Blocking hides existing inbox items from that sender and prevents future transfers from that sender account to the receiver.",
+            "For abuse, safety, copyright, privacy, or harmful-content concerns, email support.bejo@one8onestudios.com.",
+        ],
+    },
+    {
         title: "Privacy and Providers",
         items: [
             "Bejo's collection and use of personal information are described in the Privacy Policy at https://bejo.one8onestudios.com/privacy-policy.",
-            "Bejo may rely on Firebase Authentication, Cloud Firestore, Firebase Storage, Firebase Cloud Functions, Firebase Cloud Messaging, Google Cloud Run, Google Cloud infrastructure, Brevo or SMTP email infrastructure, file pickers, camera or QR scanning, media services, local printing, local sharing, and device or browser services.",
+            "Bejo may rely on Firebase Authentication for email/password authentication, Cloud Firestore, Firebase Cloud Functions, Firebase Cloud Messaging, Google Cloud Run, Google Cloud infrastructure, Cloudflare R2 object storage for active transfer files, Firebase Storage for profile photos and legacy transfer objects, Brevo or SMTP email infrastructure, file pickers, camera or QR scanning, media services, local printing, local sharing, and device or browser services.",
             "Third-party services may have their own terms, policies, outages, technical limits, and security practices.",
         ],
     },

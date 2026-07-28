@@ -1,0 +1,21 @@
+{
+    "name": "One8One Studios",
+    "short_name": "One8One",
+    "description": "Mobile app and web app development by One8One Studios.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#030108",
+    "theme_color": "#302b63",
+    "icons": [
+        {
+            "src": "/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

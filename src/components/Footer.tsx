@@ -10,6 +10,7 @@ const Footer = () => {
         { label: "About Us", path: "/about" },
         { label: "Contact", path: "/contact" },
         { label: "Privacy Policy", path: "/privacy-policy" },
+        { label: "Terms & Conditions", path: "/terms-and-conditions" },
     ];
 
     return (
@@ -19,9 +20,9 @@ const Footer = () => {
                     {/* Brand */}
                     <div className="space-y-4">
                         <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center font-heading font-bold text-primary-foreground text-sm">
-                                o8o
-                            </div>
+                          <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center font-heading font-bold text-primary-foreground text-sm">
+    181
+</div>
                             <span className="font-heading font-bold text-lg">ONE8ONE STUDIOS</span>
                         </div>
                         <p className="text-muted-foreground text-sm leading-relaxed">

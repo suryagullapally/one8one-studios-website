@@ -5,6 +5,31 @@ import * as nodemailer from "nodemailer";
 
 admin.initializeApp();
 
+type InquiryAnalysis = {
+  leadScore: number;
+  leadScoreReason: string;
+  projectSummary: string;
+  projectType: string;
+  complexity: string;
+  complexityReason: string;
+  timeEstimate?: {
+    min?: string;
+    max?: string;
+    phases?: string;
+  };
+  priceEstimate?: {
+    minINR?: number;
+    maxINR?: number;
+    reasoning?: string;
+  };
+  greenFlags?: string[];
+  redFlags?: string[];
+  clarifyingQuestions?: string[];
+  clientTone: string;
+  recommendedAction: string;
+  draftReply: string;
+};
+
 export const analyzeClientInquiry = onDocumentCreated(
   "contactMessages/{docId}",
   async (event) => {
@@ -58,7 +83,7 @@ export const analyzeClientInquiry = onDocumentCreated(
       });
 
       const rawText = completion.choices[0]?.message?.content ?? "{}";
-      const analysis = JSON.parse(rawText);
+      const analysis = JSON.parse(rawText) as InquiryAnalysis;
 
       console.log(`✅ AI analysis done. Lead Score: ${analysis.leadScore}/10`);
 
@@ -142,7 +167,7 @@ PRICING REFERENCE (India market, 2025):
 
 async function sendEmailReport({ data, analysis, gmailUser, gmailPass, ownerEmail }: {
   data: FirebaseFirestore.DocumentData;
-  analysis: any;
+  analysis: InquiryAnalysis;
   gmailUser: string;
   gmailPass: string;
   ownerEmail: string;
@@ -155,7 +180,7 @@ async function sendEmailReport({ data, analysis, gmailUser, gmailPass, ownerEmai
   const scoreColor = analysis.leadScore >= 7 ? "#22c55e" : analysis.leadScore >= 4 ? "#f59e0b" : "#ef4444";
   const cxColor: Record<string, string> = { Low: "#22c55e", Medium: "#f59e0b", High: "#f97316", "Very High": "#ef4444" };
   const fmt = (n: number) => "₹" + Number(n).toLocaleString("en-IN");
-  const safe = (s: string) => (s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const safe = (s: unknown) => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
   const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
     *{box-sizing:border-box;margin:0;padding:0}

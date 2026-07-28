@@ -31,7 +31,7 @@ const Navbar = () => {
                 <div className="container mx-auto flex items-center justify-between h-16 px-4 relative z-10">
                     <Link to="/" className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center font-heading font-bold text-primary-foreground text-sm">
-                            o8o
+                            181
                         </div>
                         <span className="font-heading font-bold text-lg text-foreground">ONE8ONE STUDIOS</span>
                     </Link>

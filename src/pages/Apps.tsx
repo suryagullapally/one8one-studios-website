@@ -1,35 +1,20 @@
-import { ExternalLink, Apple, Smartphone, Globe } from "lucide-react";
+import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
+import { Apple, Globe, Smartphone, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import AnimatedSection, { ParallaxLayer, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
+import AnimatedSection from "@/components/AnimatedSection";
+import BejoDownloadDropdown from "@/components/BejoDownloadDropdown";
+import { bejoApp } from "@/data/bejoContent";
+
 const apps = [
     {
-        name: "BEJO",
-        tagline: "Aaram Se",
-        description: "Bejo is a secure QR-based file sharing app that lets you decide what happens with your sent files. It allows you to set a timer for your sent files to expire.",
-        gradient: "from-primary to-accent",
-        platforms: ["iOS", "Android", "Web"],
-        features: ["Scan & Send", "Auto-Expiry", "One-time View", "Download & Print options", "Print copies & Print style"],
+        ...bejoApp,
+        path: "/apps/bejo",
     },
-    /*{
-       name: "PulseHealth",
-       tagline: "Your wellness companion",
-       description: "Track your health holistically with PulseHealth. From fitness metrics to mental wellness check-ins, this app gives you a 360° view of your well-being with personalized insights.",
-       gradient: "from-green-500 to-emerald-600",
-       platforms: ["iOS", "Android"],
-       features: ["Health Metrics Tracking", "Mood & Wellness Logs", "Personalized Insights", "Wearable Integration"],
-   },
-   {
-       name: "SnapVault",
-       tagline: "Secure media storage",
-       description: "End-to-end encrypted media storage that puts privacy first. SnapVault lets you store, organize, and share your photos and videos with military-grade security.",
-       gradient: "from-orange-500 to-red-500",
-       platforms: ["iOS", "Android", "Web"],
-       features: ["E2E Encryption", "Smart Albums", "Secure Sharing", "Cloud Backup"],
-    }, */
 ];
 
-const platformIcons: Record<string, React.ReactNode> = {
+const platformIcons: Record<string, ReactNode> = {
     iOS: <Apple size={14} />,
     Android: <Smartphone size={14} />,
     Web: <Globe size={14} />,
@@ -37,20 +22,18 @@ const platformIcons: Record<string, React.ReactNode> = {
 
 const Apps = () => {
     return (
-        <div className="min-h-screen pt-24">
+        <div className="min-h-screen pt-24 bg-[linear-gradient(180deg,hsl(var(--background))_0%,hsl(247_42%_8%)_48%,hsl(var(--background))_100%)]">
             <section className="pt-4 pb-14 md:pb-16 px-4 relative overflow-hidden">
-                <ParallaxLayer speed={0.1} className="absolute top-20 left-0 pointer-events-none">
-                    <div className="w-80 h-80 bg-accent/5 rounded-full blur-3xl -translate-x-1/2" />
-                </ParallaxLayer>
-
                 <div className="container mx-auto px-4 relative z-10">
                     <AnimatedSection direction="scale">
                         <div className="text-center mb-10 md:mb-12">
-                            <div className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6">
+                            <div className="inline-block px-4 py-1.5 rounded-full border border-[#8d7cff]/30 bg-[#8d7cff]/10 text-[#bdb4ff] text-sm font-medium mb-6">
                                 Our Products
                             </div>
-                            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4">Apps We've Built</h1>
-                            <p className="text-muted-foreground max-w-xl mx-auto text-lg">Products born from our passion for solving real-world problems with elegant technology.</p>
+                            <h1 className="font-heading text-4xl md:text-5xl font-bold mb-4 text-white">Apps We've Built</h1>
+                            <p className="text-slate-300/85 max-w-2xl mx-auto text-lg">
+                                Purpose-built products with considered workflows, refined interfaces, and practical controls.
+                            </p>
                         </div>
                     </AnimatedSection>
 
@@ -58,52 +41,50 @@ const Apps = () => {
                         {apps.map((app, i) => (
                             <AnimatedSection key={i} delay={0.1} direction={i % 2 === 0 ? "left" : "right"}>
                                 <motion.div
-                                    whileHover={{ scale: 1.01 }}
+                                    whileHover={{ y: -4 }}
                                     transition={{ type: "spring", stiffness: 200 }}
-                                    className="glass-card rounded-2xl overflow-hidden"
+                                    className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#0c1020]/80 shadow-2xl shadow-black/30 backdrop-blur-xl"
                                 >
-                                    <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0 ${i % 2 === 1 ? "lg:direction-rtl" : ""}`}>
+                                    <div className="grid grid-cols-1 lg:grid-cols-2">
                                         <motion.div
-                                            whileHover={{ scale: 1.02 }}
+                                            whileHover={{ scale: 1.01 }}
                                             transition={{ duration: 0.4 }}
-                                            className={`bg-gradient-to-br ${app.gradient} p-10 md:p-16 flex items-center justify-center min-h-[300px] ${i % 2 === 1 ? "lg:order-2" : ""}`}
+                                            className="relative min-h-[300px] overflow-hidden bg-[#302b63] p-10 md:p-14 flex items-center justify-center"
                                         >
-                                            <div className="text-center">
-                                                <motion.div
-                                                    whileHover={{ rotate: 10, scale: 1.1 }}
-                                                    className="w-24 h-24 rounded-3xl bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-4"
-                                                >
-                                                    <span className="text-5xl font-heading font-bold text-white">{app.name[0]}</span>
-                                                </motion.div>
-                                                <h3 className="text-2xl font-heading font-bold text-white">{app.name}</h3>
-                                                <p className="text-white/80 mt-1">{app.tagline}</p>
+                                            <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.02)_38%,rgba(8,10,26,0.38)_100%)]" />
+                                            <div className="relative z-10 text-center">
+                                                <h3 className="font-heading text-5xl md:text-6xl font-bold tracking-normal text-white">{app.name}</h3>
+                                                <p className="mt-3 text-xl font-semibold text-white/80">{app.tagline}</p>
                                             </div>
                                         </motion.div>
 
-                                        <div className={`p-8 md:p-12 flex flex-col justify-center ${i % 2 === 1 ? "lg:order-1" : ""}`}>
-                                            <div className="flex gap-2 mb-4">
+                                        <div className="p-8 md:p-12 flex flex-col justify-center">
+                                            <div className="flex flex-wrap gap-2 mb-5">
                                                 {app.platforms.map((p) => (
-                                                    <span key={p} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-muted/50 text-muted-foreground text-xs font-medium">
+                                                    <span key={p} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/10 bg-white/[0.04] text-slate-300/80 text-xs font-medium">
                                                         {platformIcons[p]} {p}
                                                     </span>
                                                 ))}
                                             </div>
-                                            <p className="text-muted-foreground leading-relaxed mb-6">{app.description}</p>
-                                            <StaggerContainer className="grid grid-cols-2 gap-2 mb-8" staggerDelay={0.08}>
-                                                {app.features.map((f) => (
-                                                    <StaggerItem key={f}>
-                                                        <div className="flex items-center gap-2 text-sm text-foreground">
-                                                            <div className="w-1.5 h-1.5 rounded-full gradient-bg shrink-0" />
-                                                            {f}
-                                                        </div>
-                                                    </StaggerItem>
-                                                ))}
-                                            </StaggerContainer>
-                                            <div className="flex gap-3">
-                                                <Button className="gradient-bg text-primary-foreground hover:opacity-90">
-                                                    Download <ExternalLink size={14} />
+
+                                            <div className="mb-7">
+                                                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-[#bdb4ff]">About BEJO</p>
+                                                <p className="mt-5 text-base leading-relaxed text-slate-300/85">{app.description}</p>
+                                            </div>
+
+                                            <div className="flex flex-wrap gap-3">
+                                                <BejoDownloadDropdown className="bg-white text-[#302b63] hover:bg-white/90" />
+                                                
+                                                <Button asChild variant="outline" className="border-white/15 bg-white/[0.02] text-white hover:bg-white/[0.07] transition-all">
+                                                    <a href="https://bejo.one8onestudios.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                                                        Open
+                                                        <ExternalLink size={16} />
+                                                    </a>
                                                 </Button>
-                                                <Button variant="outline" className="border-border/50">Learn More</Button>
+
+                                                <Button asChild variant="outline" className="border-white/15 bg-white/[0.02] text-white hover:bg-white/[0.07] transition-all">
+                                                    <Link to={app.path}>Learn More</Link>
+                                                </Button>
                                             </div>
                                         </div>
                                     </div>

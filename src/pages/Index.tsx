@@ -72,7 +72,7 @@ const Index = () => {
 
                     <AnimatedSection delay={0.2}>
                         <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                            We craft mobile apps, web apps, Firebase-backed products, and polished digital platforms for startups and ambitious businesses in Hyderabad, India, and beyond.
+                            We craft mobile apps, web apps and polished digital platforms for startups and ambitious businesses in Hyderabad, India, and beyond.
                         </p>
                     </AnimatedSection>
 
@@ -137,7 +137,7 @@ const Index = () => {
                         <div className="text-center mb-10">
                             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">What We Do</h2>
                             <p className="text-muted-foreground max-w-2xl mx-auto">
-                                End-to-end mobile app development, web app development, product design, and Firebase-backed software delivery for teams that need reliable, launch-ready products.
+                                End-to-end mobile app development, web app development, product design, and backend software delivery for teams that need reliable, launch-ready products.
                             </p>
                         </div>
                     </AnimatedSection>

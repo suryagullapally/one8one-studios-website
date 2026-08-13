@@ -28,7 +28,7 @@ const featureCards = [
 const trustItems = [
     "Sender permissions can control download, print, pause, expiry, and view behavior where supported.",
     "Files are not positioned as permanent archive, backup, legal-record, or guaranteed long-term storage.",
-    "Bejo uses Firebase and Google Cloud infrastructure with reasonable technical and organizational safeguards.",
+    "Bejo uses Firebase and Google Cloud infrastructure with technical and organizational safeguards.",
 ];
 
 const BejoApp = () => {

@@ -10,7 +10,7 @@ const values = [
 ];
 
 const team = [
-    { name: "Surya Teja Gullapally", role: "CEO & Founder", bio: "10+ years in tech, former lead at siri surya construction company." },
+    { name: "Surya Teja Gullapally", role: "CEO & Founder", bio: "Full stack Java developer with 10+ years in tech, Worked at various tech companies, IBM, CGI, Value Labs." },
     { name: "Sujatha Allabani", role: "Co-founder & CTO", bio: "Full-stack architect and system engineer worked in IBM and other companies." },
     { name: "Sudiksha Raipole", role: "Co-founder & Head of Design", bio: "Award-winning designer focused on human-centered experiences." },
    /* { name: "Jordan Lee", role: "Lead Developer", bio: "Mobile-first engineer who's shipped 20+ production apps." }, */

@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import { Github, Twitter, Linkedin, Instagram, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
 const Footer = () => {
     const quickLinks = [
-        { label: "Our Apps", path: "/apps" },
+        { label: "Our Work", path: "/apps" },
         { label: "Portfolio", path: "/portfolio" },
         { label: "About Us", path: "/about" },
         { label: "Contact", path: "/contact" },
@@ -26,15 +25,8 @@ const Footer = () => {
                             <span className="font-heading font-bold text-lg">ONE8ONE STUDIOS</span>
                         </div>
                         <p className="text-muted-foreground text-sm leading-relaxed">
-                            We build world-class apps that transform businesses and empower users across the globe.
+                            We design and engineer mobile apps, web platforms and production systems for our own products and client work.
                         </p>
-                        <div className="flex gap-3">
-                            {[Twitter, Github, Linkedin, Instagram].map((Icon, i) => (
-                                <a key={i} href="#" className="w-9 h-9 rounded-lg bg-muted/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors">
-                                    <Icon size={16} />
-                                </a>
-                            ))}
-                        </div>
                     </div>
 
                     {/* Quick Links */}
@@ -59,16 +51,16 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Newsletter */}
+                    {/* Contact CTA */}
                     <div className="space-y-4">
-                        <h4 className="font-heading font-semibold text-sm uppercase tracking-wider text-foreground">Stay Updated</h4>
-                        <p className="text-sm text-muted-foreground">Get the latest on our apps and services.</p>
-                        <div className="flex gap-2">
-                            <Input placeholder="Your email" className="bg-muted/50 border-border/50 text-sm" />
-                            <Button size="sm" className="gradient-bg text-primary-foreground shrink-0">
+                        <h4 className="font-heading font-semibold text-sm uppercase tracking-wider text-foreground">Start a Project</h4>
+                        <p className="text-sm text-muted-foreground">Tell us what you want to build and where the product needs to go next.</p>
+                        <Button asChild size="sm" className="gradient-bg text-primary-foreground">
+                            <Link to="/contact">
                                 <Mail size={16} />
-                            </Button>
-                        </div>
+                                Contact Us
+                            </Link>
+                        </Button>
                     </div>
                 </div>
 

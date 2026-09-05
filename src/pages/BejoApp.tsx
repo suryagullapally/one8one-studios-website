@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/AnimatedSection";
 import BejoDownloadDropdown from "@/components/BejoDownloadDropdown";
 import { bejoApp, termsSections } from "@/data/bejoContent";
+import { bejoProject } from "@/data/projects";
 
 const screenshots = [
     { title: "Dashboard", src: "/bejo-screenshots/dashboard.jpg" },
@@ -82,7 +83,7 @@ const BejoApp = () => {
                                     ))}
                                 </div>
                                 
-                                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#8d7cff]">Bejo App</p>
+                                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-[#8d7cff]">{bejoProject.typeLabel}</p>
                                 
                                 <h1 className="font-heading text-4xl font-extrabold leading-tight text-white md:text-5xl">{bejoApp.name}</h1>
                                 

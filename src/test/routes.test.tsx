@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import App from "@/App";
 import { privacySections, termsSections } from "@/data/bejoContent";
+import { getSeoRoute, SITE_URL } from "@/data/seo";
 
 const renderAt = (path: string) => {
     window.history.pushState({}, "", path);
@@ -30,6 +31,13 @@ describe("public routes", () => {
         renderAt("/apps/bejo");
         expect(screen.getByRole("heading", { name: "BEJO" })).toBeInTheDocument();
         expect(screen.getByRole("heading", { name: /app screenshots/i })).toBeInTheDocument();
+    });
+
+    it("renders the Basilico client project detail page", () => {
+        renderAt("/apps/basilico");
+        expect(screen.getByRole("heading", { level: 1, name: "Basilico – Simple Italian" })).toBeInTheDocument();
+        expect(screen.getByText("Priya Madhuri")).toBeInTheDocument();
+        expect(screen.getByRole("link", { name: /visit basilico live website/i })).toHaveAttribute("href", "https://basilicodorchester.co.uk");
     });
 
     it("shows BEJO download platform choices on the apps page", async () => {
@@ -98,5 +106,11 @@ describe("public routes", () => {
         expect(legalContent).toContain("https://bejo.one8onestudios.com/terms-and-conditions");
         expect(legalContent).not.toContain("https://one8onestudios.com/privacy-policy");
         expect(legalContent).not.toContain("https://one8onestudios.com/terms-and-conditions");
+    });
+
+    it("uses the One8One root domain for public SEO routes", () => {
+        expect(SITE_URL).toBe("https://one8onestudios.com");
+        expect(getSeoRoute("/apps")?.description).toMatch(/BEJO and the Basilico/i);
+        expect(getSeoRoute("/apps/basilico")?.title).toBe("Basilico Restaurant Platform | One8One Studios Client Project");
     });
 });

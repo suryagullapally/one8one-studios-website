@@ -1,26 +1,21 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Smartphone, Palette, Layers, Rocket, Users, Calendar } from "lucide-react";
+import { ArrowRight, ExternalLink, Globe, Layers, Palette, Rocket, Smartphone, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import AnimatedSection, { ParallaxLayer, FloatingElement, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
+import { studioProjects } from "@/data/projects";
 
 const stats = [
-    { icon: Rocket, value: "01", label: "Apps Launched" },
-    /*{ icon: Users, value: "00", label: "Clients Served" },*/
-    { icon: Calendar, value: "1", label: "Startup Year" },
+    { icon: Rocket, value: "02", label: "Projects Shipped" },
+    { icon: Users, value: "01", label: "Client Project" },
+    { icon: Globe, value: "India + UK", label: "Delivery Reach" },
 ];
 
 const services = [
-    { icon: Smartphone, title: "Custom App Development", description: "Native and cross-platform apps built with cutting-edge technology for iOS, Android, and Web." },
-    { icon: Palette, title: "UI/UX Design", description: "Human-centered design that delights users and drives engagement with intuitive interfaces." },
-    { icon: Layers, title: "End-to-End Solutions", description: "From concept to deployment and beyond — we handle the entire app lifecycle." },
-];
-
-const featuredApps = [
-    { name: "Bejo", tagline: "Aaram Se", color: "from-primary to-accent" },
-    // { name: "PulseHealth", tagline: "Your wellness companion", color: "from-green-500 to-emerald-600" },
-    // { name: "SnapVault", tagline: "Secure media storage", color: "from-orange-500 to-red-500" },
+    { icon: Smartphone, title: "Product & App Development", description: "Mobile apps, web platforms and product workflows designed around real users and launch constraints." },
+    { icon: Palette, title: "UI/UX & Product Design", description: "Interface systems, user journeys and polished product surfaces shaped before the build gets expensive." },
+    { icon: Layers, title: "End-to-End Engineering", description: "Frontend, backend, payments, integrations, deployment and support handled as one connected delivery." },
 ];
 
 const Index = () => {
@@ -58,7 +53,7 @@ const Index = () => {
                             transition={{ duration: 0.5, ease: "easeOut" }}
                             className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-8"
                         >
-                            Building the future, one app at a time
+                            Product studio for apps and client platforms
                         </motion.div>
                     </AnimatedSection>
 
@@ -72,7 +67,7 @@ const Index = () => {
 
                     <AnimatedSection delay={0.2}>
                         <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                            We craft mobile apps, web apps and polished digital platforms for startups and ambitious businesses in Hyderabad, India, and beyond.
+                            We design, engineer and launch mobile apps, web platforms and digital products, from our own software to production systems for clients in India and the UK.
                         </p>
                     </AnimatedSection>
 
@@ -80,7 +75,7 @@ const Index = () => {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link to="/apps">
                                 <Button size="lg" className="gradient-bg text-primary-foreground text-base px-8 hover:opacity-90">
-                                    Explore Our Apps <ArrowRight size={18} />
+                                    Explore Our Work <ArrowRight size={18} />
                                 </Button>
                             </Link>
                             <Link to="/contact">
@@ -165,7 +160,7 @@ const Index = () => {
                 </div>
             </section>
 
-            {/* Featured Apps Preview */}
+            {/* Featured Work Preview */}
             <section className="py-14 md:py-16 px-4 bg-card/30 relative overflow-hidden">
                 {/* Parallax decorative elements */}
                 <ParallaxLayer speed={0.15} className="absolute top-0 right-0 pointer-events-none">
@@ -175,27 +170,88 @@ const Index = () => {
                 <div className="container mx-auto px-4 relative z-10">
                     <AnimatedSection>
                         <div className="text-center mb-10">
-                            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Our Apps</h2>
-                            <p className="text-muted-foreground max-w-xl mx-auto">Products we've built in-house, used by thousands worldwide.</p>
+                            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Selected Work</h2>
+                            <p className="text-muted-foreground max-w-xl mx-auto">Products and client platforms we've designed, built and shipped.</p>
                         </div>
                     </AnimatedSection>
 
-                    <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerDelay={0.12}>
-                        {featuredApps.map((app, i) => (
-                            <StaggerItem key={i}>
+                    <StaggerContainer className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2" staggerDelay={0.12}>
+                        {studioProjects.map((project) => (
+                            <StaggerItem key={project.slug}>
                                 <motion.div
                                     whileHover={{ y: -8, scale: 1.02 }}
                                     transition={{ type: "spring", stiffness: 300 }}
-                                    className="glass-card p-6 rounded-xl group cursor-pointer"
+                                    className={`h-full overflow-hidden rounded-xl border p-4 shadow-xl shadow-black/10 ${project.visual.cardClass}`}
                                 >
-                                    <motion.div
-                                        whileHover={{ scale: 1.1, rotate: -3 }}
-                                        className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${app.color} flex items-center justify-center mb-5`}
-                                    >
-                                        <span className="text-2xl font-heading font-bold text-white">{app.name[0]}</span>
-                                    </motion.div>
-                                    <h3 className="font-heading text-lg font-semibold mb-1">{app.name}</h3>
-                                    <p className="text-muted-foreground text-sm">{app.tagline}</p>
+                                    <div className={`relative mb-5 flex aspect-[16/10] items-center justify-center overflow-hidden rounded-lg ${project.visual.backgroundClass}`}>
+                                        {project.visual.heroImage ? (
+                                            <>
+                                                <img
+                                                    src={project.visual.heroImage}
+                                                    alt={project.visual.heroAlt}
+                                                    width={1600}
+                                                    height={893}
+                                                    loading="lazy"
+                                                    className="absolute inset-0 h-full w-full object-cover"
+                                                />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/10" />
+                                                {project.visual.logo && (
+                                                    <img
+                                                        src={project.visual.logo}
+                                                        alt={`${project.shortName} logo`}
+                                                        width={1024}
+                                                        height={768}
+                                                        loading="lazy"
+                                                        className="relative z-10 h-auto w-44 drop-shadow-2xl"
+                                                    />
+                                                )}
+                                            </>
+                                        ) : (
+                                            <motion.div
+                                                whileHover={{ scale: 1.08, rotate: -2 }}
+                                                className="relative z-10 flex h-20 w-20 items-center justify-center rounded-2xl border border-white/20 bg-black/20"
+                                            >
+                                                <span className="font-heading text-2xl font-bold text-white">{project.shortName}</span>
+                                            </motion.div>
+                                        )}
+                                    </div>
+
+                                    <div className="flex flex-col">
+                                        <div className="mb-3 flex flex-wrap gap-2">
+                                            <span className={`rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] ${project.visual.accentClass}`}>
+                                                {project.typeLabel}
+                                            </span>
+                                            {project.projectType === "client-project" && (
+                                                <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-300">
+                                                    United Kingdom
+                                                </span>
+                                            )}
+                                        </div>
+
+                                        <h3 className="font-heading text-xl font-semibold text-white">{project.name}</h3>
+                                        <p className={`mt-1 text-sm font-medium ${project.visual.accentClass}`}>{project.tagline}</p>
+                                        <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-300/85">{project.homepageDescription}</p>
+
+                                        <div className="mt-5 flex flex-wrap gap-2">
+                                            {project.cardChips.map((chip) => (
+                                                <span key={chip} className="rounded-full bg-white/[0.05] px-3 py-1 text-xs font-medium text-slate-300">
+                                                    {chip}
+                                                </span>
+                                            ))}
+                                        </div>
+
+                                        <div className="mt-6 flex flex-wrap gap-3">
+                                            <Button asChild size="sm" className={project.slug === "basilico" ? "bg-[#f6c56f] text-[#15100b] hover:bg-[#ffd887]" : "gradient-bg text-primary-foreground"}>
+                                                <Link to={project.internalPath}>{project.slug === "basilico" ? "View Project" : "Learn More"}</Link>
+                                            </Button>
+                                            <Button asChild size="sm" variant="outline" className="border-white/15 bg-white/[0.02] text-white hover:bg-white/[0.07]">
+                                                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                                                    {project.slug === "basilico" ? "Visit Live Site" : "Open BEJO"}
+                                                    <ExternalLink size={14} className="ml-2" />
+                                                </a>
+                                            </Button>
+                                        </div>
+                                    </div>
                                 </motion.div>
                             </StaggerItem>
                         ))}
@@ -205,7 +261,7 @@ const Index = () => {
                         <div className="text-center mt-10">
                             <Link to="/apps">
                                 <Button variant="outline" className="border-border/50 hover:bg-muted/50">
-                                    View All Apps <ArrowRight size={16} />
+                                    View All Work <ArrowRight size={16} />
                                 </Button>
                             </Link>
                         </div>
@@ -228,7 +284,7 @@ const Index = () => {
                             </FloatingElement>
                             <div className="relative z-10">
                                 <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Ready to Build Something Amazing?</h2>
-                                <p className="text-muted-foreground max-w-lg mx-auto mb-8">Let's turn your vision into a world-class app. Get in touch and let's start the conversation.</p>
+                                <p className="text-muted-foreground max-w-lg mx-auto mb-8">Let's turn your idea into a reliable product or platform. Get in touch and let's start the conversation.</p>
                                 <Link to="/contact">
                                     <Button size="lg" className="gradient-bg text-primary-foreground px-8 hover:opacity-90">
                                         Let's Talk <ArrowRight size={18} />

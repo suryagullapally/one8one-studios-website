@@ -18,10 +18,7 @@ const team = [
 
 const milestones = [
     { year: "2025", event: "One8one Studios founded with a vision to democratize app development." },
-    { year: "2026", event: "Launched Bejo — our first in-house app, reaching 10K users." },
-    /* { year: "2022", event: "Expanded to a team of 15, serving clients across 3 continents." },
-     { year: "2023", event: "Released PulseHealth & SnapVault. Surpassed 40 client projects." },
-     { year: "2024", event: "Opened second office. Recognized as a top app dev agency." },*/
+    { year: "2026", event: "Launched BEJO as a company-owned product and shipped Basilico as a UK client platform." },
 ];
 
 const About = () => {
@@ -41,7 +38,7 @@ const About = () => {
                             </div>
                             <h1 className="font-heading text-4xl md:text-5xl font-bold mb-6">We're on a Mission to Build<br /><span className="gradient-text">What Matters</span></h1>
                             <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mx-auto">
-                                One8one Studios was founded on the belief that great technology should be accessible to everyone. We build our own apps and help ambitious businesses bring their ideas to life with world-class software.
+                                One8one Studios was founded on the belief that great technology should be accessible to practical teams and real businesses. We build our own products and help clients bring useful digital platforms to life.
                             </p>
                         </div>
                     </AnimatedSection>

@@ -10,6 +10,7 @@ import SEO from "@/components/SEO";
 import Index from "./pages/Index";
 import Apps from "./pages/Apps";
 import BejoApp from "./pages/BejoApp";
+import BasilicoApp from "./pages/BasilicoApp";
 import Portfolio from "./pages/Portfolio";
 import About from "./pages/About";
 import Impact from "./pages/Impact";
@@ -45,6 +46,7 @@ const App = () => (
                             <Route path="/" element={<Index />} />
                             <Route path="/apps" element={<Apps />} />
                             <Route path="/apps/bejo" element={<BejoApp />} />
+                            <Route path="/apps/basilico" element={<BasilicoApp />} />
                             <Route path="/portfolio" element={<Portfolio />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/impact" element={<Impact />} />

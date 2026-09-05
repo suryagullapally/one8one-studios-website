@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const navLinks = [
     { label: "Home", path: "/" },
-    { label: "Our Apps", path: "/apps" },
+    { label: "Our Work", path: "/apps" },
     { label: "Portfolio", path: "/portfolio" },
     { label: "About", path: "/about" },
     // { label: "Impact", path: "/impact" },
@@ -15,6 +15,7 @@ const navLinks = [
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const location = useLocation();
+    const isActive = (path: string) => location.pathname === path || (path !== "/" && location.pathname.startsWith(`${path}/`));
 
     return (
         <>
@@ -42,7 +43,7 @@ const Navbar = () => {
                         <Link
                             key={link.path}
                             to={link.path}
-                            className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${location.pathname === link.path
+                            className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive(link.path)
                                 ? "text-primary bg-primary/10"
                                 : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                                 }`}
@@ -75,7 +76,7 @@ const Navbar = () => {
                                 key={link.path}
                                 to={link.path}
                                 onClick={() => setIsOpen(false)}
-                                className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${location.pathname === link.path
+                                className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${isActive(link.path)
                                     ? "text-primary bg-primary/10"
                                     : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                                     }`}

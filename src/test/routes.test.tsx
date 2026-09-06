@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import App from "@/App";
-import { privacySections, termsSections } from "@/data/bejoContent";
+import { bejoDownloadLinks, privacySections, termsSections } from "@/data/bejoContent";
 import { getSeoRoute, SITE_URL } from "@/data/seo";
 
 const renderAt = (path: string) => {
@@ -47,12 +47,15 @@ describe("public routes", () => {
 
         const items = await screen.findAllByRole("menuitem");
         expect(items.map(menuItemName)).toEqual([
-            "Web",
-            "Android Releasing soon",
+            "Open BEJO web app",
+            "Download BEJO on Google Play",
             "iOS Releasing soon",
         ]);
-        expect(screen.getByRole("menuitem", { name: "Web" })).toHaveAttribute("href", "https://bejo.one8onestudios.com");
-        expect(screen.getByRole("menuitem", { name: /android releasing soon/i })).toHaveAttribute("aria-disabled", "true");
+        expect(screen.getByRole("menuitem", { name: /open bejo web app/i })).toHaveAttribute("href", bejoDownloadLinks.web);
+        expect(screen.getByRole("menuitem", { name: /download bejo on google play/i })).toHaveAttribute("href", bejoDownloadLinks.android);
+        expect(screen.getByRole("menuitem", { name: /download bejo on google play/i })).toHaveAttribute("target", "_blank");
+        expect(screen.getByRole("menuitem", { name: /download bejo on google play/i })).toHaveAttribute("rel", "noopener noreferrer");
+        expect(screen.queryByRole("menuitem", { name: /android releasing soon/i })).not.toBeInTheDocument();
         expect(screen.getByRole("menuitem", { name: /ios releasing soon/i })).toHaveAttribute("aria-disabled", "true");
     });
 
@@ -63,12 +66,15 @@ describe("public routes", () => {
 
         const items = await screen.findAllByRole("menuitem");
         expect(items.map(menuItemName)).toEqual([
-            "Web",
-            "Android Releasing soon",
+            "Open BEJO web app",
+            "Download BEJO on Google Play",
             "iOS Releasing soon",
         ]);
-        expect(screen.getByRole("menuitem", { name: "Web" })).toHaveAttribute("href", "https://bejo.one8onestudios.com");
-        expect(screen.getByRole("menuitem", { name: /android releasing soon/i })).toHaveAttribute("aria-disabled", "true");
+        expect(screen.getByRole("menuitem", { name: /open bejo web app/i })).toHaveAttribute("href", bejoDownloadLinks.web);
+        expect(screen.getByRole("menuitem", { name: /download bejo on google play/i })).toHaveAttribute("href", bejoDownloadLinks.android);
+        expect(screen.getByRole("menuitem", { name: /download bejo on google play/i })).toHaveAttribute("target", "_blank");
+        expect(screen.getByRole("menuitem", { name: /download bejo on google play/i })).toHaveAttribute("rel", "noopener noreferrer");
+        expect(screen.queryByRole("menuitem", { name: /android releasing soon/i })).not.toBeInTheDocument();
         expect(screen.getByRole("menuitem", { name: /ios releasing soon/i })).toHaveAttribute("aria-disabled", "true");
     });
 

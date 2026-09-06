@@ -6,9 +6,24 @@ import { bejoApp } from "@/data/bejoContent";
 
 type BejoDownloadDropdownProps = Pick<ButtonProps, "className" | "size" | "variant">;
 
-const soonPlatforms = [
-    { label: "Android", icon: Smartphone },
-    { label: "iOS", icon: Apple },
+const platformOptions = [
+    {
+        label: "Web",
+        icon: Globe,
+        href: bejoApp.downloadUrl,
+        ariaLabel: "Open BEJO web app",
+    },
+    {
+        label: "Android",
+        icon: Smartphone,
+        href: bejoApp.googlePlayUrl,
+        ariaLabel: "Download BEJO on Google Play",
+    },
+    {
+        label: "iOS",
+        icon: Apple,
+        availabilityLabel: "Releasing soon",
+    },
 ];
 
 const BejoDownloadDropdown = ({ className, size, variant }: BejoDownloadDropdownProps) => {
@@ -104,30 +119,37 @@ const BejoDownloadDropdown = ({ className, size, variant }: BejoDownloadDropdown
                             minWidth: menuPosition.width,
                         }}
                     >
-                        <a
-                            role="menuitem"
-                            href={bejoApp.downloadUrl}
-                            className="flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-200 transition-colors hover:bg-[#8d7cff]/20 hover:text-white focus:bg-[#8d7cff]/20 focus:text-white focus:outline-none"
-                        >
-                            <Globe size={16} className="text-[#a395ff]" />
-                            <span className="font-medium">Web</span>
-                        </a>
-                        {soonPlatforms.map((platform) => (
-                            <button
-                                key={platform.label}
-                                type="button"
-                                role="menuitem"
-                                aria-disabled="true"
-                                aria-label={`${platform.label} Releasing soon`}
-                                tabIndex={-1}
-                                className="flex w-full cursor-not-allowed items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-slate-300"
-                                onClick={(event) => event.preventDefault()}
-                            >
-                                <platform.icon size={16} className="text-slate-500" />
-                                <span className="font-medium">{platform.label}</span>
-                                <span className="ml-auto text-xs text-slate-500">Releasing soon</span>
-                            </button>
-                        ))}
+                        {platformOptions.map((platform) =>
+                            platform.href ? (
+                                <a
+                                    key={platform.label}
+                                    role="menuitem"
+                                    href={platform.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={platform.ariaLabel}
+                                    className="flex w-full cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-200 transition-colors hover:bg-[#8d7cff]/20 hover:text-white focus:bg-[#8d7cff]/20 focus:text-white focus:outline-none"
+                                >
+                                    <platform.icon size={16} className="text-[#a395ff]" />
+                                    <span className="font-medium">{platform.label}</span>
+                                </a>
+                            ) : (
+                                <button
+                                    key={platform.label}
+                                    type="button"
+                                    role="menuitem"
+                                    aria-disabled="true"
+                                    aria-label={`${platform.label} ${platform.availabilityLabel}`}
+                                    tabIndex={-1}
+                                    className="flex w-full cursor-not-allowed items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm text-slate-300"
+                                    onClick={(event) => event.preventDefault()}
+                                >
+                                    <platform.icon size={16} className="text-slate-500" />
+                                    <span className="font-medium">{platform.label}</span>
+                                    <span className="ml-auto text-xs text-slate-500">{platform.availabilityLabel}</span>
+                                </button>
+                            ),
+                        )}
                     </div>,
                     document.body,
                 )}

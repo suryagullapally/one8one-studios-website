@@ -3,6 +3,11 @@ export type LegalSection = {
     items: string[];
 };
 
+export const bejoDownloadLinks = {
+    web: "https://bejo.one8onestudios.com",
+    android: "https://play.google.com/store/apps/details?id=com.suryateja.bejo&hl=en_GB",
+} as const;
+
 export const bejoApp = {
     name: "BEJO",
     tagline: "Aaram Se",
@@ -13,7 +18,8 @@ export const bejoApp = {
     storageNote:
         "Bejo is not a permanent archive, backup service, legal-records system, or guaranteed long-term storage service unless we expressly agree otherwise in writing.",
     platforms: ["iOS", "Android", "Web"],
-    downloadUrl: "https://bejo.one8onestudios.com",
+    downloadUrl: bejoDownloadLinks.web,
+    googlePlayUrl: bejoDownloadLinks.android,
     screenshots: [
         "Dashboard",
         "Share With Control",

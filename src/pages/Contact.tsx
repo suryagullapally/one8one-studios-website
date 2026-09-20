@@ -289,7 +289,7 @@ if (!isValidEmail(cleanedEmail)) {
                         {/* Contact Info */}
                         <StaggerContainer className="space-y-6" staggerDelay={0.12}>
                             {[
-                                { icon: Mail, label: "Email", value: "one8one.studios@gmail.com" },
+                                { icon: Mail, label: "Email", value: "contact@one8onestudios.com" },
                                 { icon: Phone, label: "Phone", value: "+91 9959888459" },
                                 { icon: MapPin, label: "Office", value: "One8one Studios, 1-31-821, krishna nagar colony, kanajiguda, Hyderabad, India" },
                             ].map((item, i) => (
